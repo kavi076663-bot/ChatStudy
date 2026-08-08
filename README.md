@@ -80,24 +80,18 @@ host = "127.0.0.1"
 port = 12345
 server.bind((host, port))
 server.listen(1)
-
 print("Server waiting for connection...")
-
 conn, addr = server.accept()
 print("Connected to:", addr)
-
 while True:
     client_msg = conn.recv(1024).decode()
     print("Client:", client_msg)
-
     if client_msg.lower() == "exit":
         break
     msg = input("Server: ")
     conn.send(msg.encode())
-
     if msg.lower() == "exit":
         break
-
 conn.close()
 server.close()
 ```
@@ -111,22 +105,16 @@ client.connect((host, port))
 while True:
     msg = input("Client: ")
     client.send(msg.encode())
-
     if msg.lower() == "exit":
         break
     server_msg = client.recv(1024).decode()
     print("Server:", server_msg)
-
     if server_msg.lower() == "exit":
         break
-
 client.close()
 ```
 ## output:
 <img width="1210" height="296" alt="image" src="https://github.com/user-attachments/assets/1a992bea-b965-48fc-b382-3f7210a66fa8" />
-
-
 ## Result:
-
 Thus the study on Client Server Chat Applications has been performed
 
